@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Web地図の仕組みを使った歴史年表です。有史/縄文時代～/後期旧石器時代～/地球誕生～の時間範囲で表示できます。時代の長さや出来事の発生時期をざっくり直感的につかむための年表です。">
+  <meta name="theme-color" content="#C4DFE6">
+  <meta name="thumbnail" content="https://kiritter.github.io/timelinemap/thumbnails/thmb-256x256.png">
+  <meta property="og:title" content="歴史年表地図：地図で表現するタイムライン">
+  <meta property="og:description" content="Web地図の仕組みを使った歴史年表です。有史/縄文時代～/後期旧石器時代～/地球誕生～の時間範囲で表示できます。時代の長さや出来事の発生時期をざっくり直感的につかむための年表です。">
+  <meta property="og:url" content="https://kiritter.github.io/timelinemap/">
+  <meta property="og:image" content="https://kiritter.github.io/timelinemap/thumbnails/thmb-192x192.png">
+  <meta name="twitter:card" content="summary">
+  <title>歴史年表地図：地図で表現するタイムライン</title>
+  <base href="/timelinemap/">
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" type="image/png" href="icons/apple-touch-icon-180x180.png">
+  <link rel="stylesheet" href="css/vendor/leaflet_v1.9.4/leaflet.css">
+  <link rel="stylesheet" href="css/app/index.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B25L64G43V"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host === '127.0.0.1' || host === 'localhost') {
+      gtag = console.debug;
+    }else{
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B25L64G43V');
+    }
+  </script>
+</head>
+
+<body class="js-body">
+  <div class="my-header">
+    <span class="map-reload"><a class="map-reload-anchor" href="./" target="_self"><img class="map-reload-img" src="images/reload_48px.png" width="18" alt="Reload this page"></a></span>
+    <span class="map-title">歴史年表地図<span class="map-title-part">：地図で表現するタイムライン</span></span>
+    <span class="map-theme-area">
+      <span class="map-theme-note"></span>
+    </span>
+    <span class="advanced">
+      <input type="button" class="advanced-show-btn js-advanced-show-btn" value="Advanced機能">
+    </span>
+    <span class="about">
+      <a href="html/about.html" target="_blank">About</a>
+    </span>
+  </div>
+
+  <div class="my-body">
+
+    <div class="map-area">
+      <div class="map-left-wrap js-map-left-wrap">
+        <div id="map-left" class="js-map-left"></div>
+      </div>
+    </div>
+
+    <div class="current-zoom-level">
+      <span>Zoom [<span class="js-current-zoom-level"></span>]</span>
+    </div>
+
+    <div class="theme-remarks-area">
+      <div>
+        <div class="theme-remarks-note">新幹線の駅間の実キロを<br>年に換算して表示した歴史年表です<br>(表示上は駅間を直線で結んでいます)</div>
+      </div>
+    </div>
+
+    <div class="switch-timerange-root-area js-switch-timerange-root-area">
+      <div class="switch-timerange-area">
+        <div class="switch-timerange-header js-switch-timerange-header">
+          <div class="switch-timerange-title">[鹿児島中央駅～新青森駅]間に<br>割り当てる時間範囲</div>
+          <div class="switch-timerange-open-close-area">
+            <span class="js-switch-timerange-open-mark display-none">開く</span>
+            <span class="js-switch-timerange-close-mark">閉じる</span>
+          </div>
+        </div>
+        <div class="switch-timerange-body">
+          <label class="switch-timerange-radio-lbl js-switch-timerange-radio-lbl"><input type="radio" name="js-switch-timerange-radio-group" class="switch-timerange-radio" value="1">西暦1年(約2千年前)～</label>
+          <br>
+          <label class="switch-timerange-radio-lbl js-switch-timerange-radio-lbl"><input type="radio" name="js-switch-timerange-radio-group" class="switch-timerange-radio" value="2">縄文時代[早期](1万2千年前)～</label>
+          <br>
+          <label class="switch-timerange-radio-lbl js-switch-timerange-radio-lbl"><input type="radio" name="js-switch-timerange-radio-group" class="switch-timerange-radio" value="3">後期旧石器時代(3万8千年前)～</label>
+          <br>
+          <label class="switch-timerange-radio-lbl js-switch-timerange-radio-lbl"><input type="radio" name="js-switch-timerange-radio-group" class="switch-timerange-radio" value="9">(おまけ：地球誕生～)</label>
+          <br>
+          <div class="switch-timerange-note">※各時代の区切り年、出来事の発生年/内容、<br>　諸説あるため、ひとつの目安としてご覧ください</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copy-as-url-area">
+      <div>
+        <div class="copy-as-url-note">メモやシェアにご利用ください。<br>現在の場所をURLとしてコピー</div>
+      </div>
+      <div>
+        <div><input type="button" class="copy-as-url-btn js-copy-as-url-btn" value="クリップボードにコピー"></div>
+        <div class="copy-as-url-message js-copy-as-url-message"></div>
+        <div class="copy-as-url-btn-note"></div>
+      </div>
+    </div>
+
+    <div class="latlng-info-area latlng-info-area-left js-latlng-info-area js-latlng-info-area-left">
+      <div class="search-latlng-area">
+        <div>
+          <span>緯度,経度：<input type="text" class="search-latlng-input js-search-latlng-input" value="" placeholder="Search"></span>
+        </div>
+      </div>
+      <div class="show-latlng-area">
+        <div>
+          <div>緯度,経度：<span class="show-latlng-label js-show-latlng-label"></span></div>
+          <div>経度,緯度：<span class="show-lnglat-label js-show-lnglat-label"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="permanent-cache-area js-permanent-cache-area">
+      <div class="permanent-cache-header js-permanent-cache-header">
+        <div class="permanent-cache-header-title">Advanced機能</div>
+        <div class="permanent-cache-header-close"><input type="button" class="permanent-cache-close-btn js-permanent-cache-close-btn" value="閉じる"></div>
+      </div>
+      <div class="permanent-cache-body js-permanent-cache-body">
+      </div>
+    </div>
+
+    <div class="message-area js-message-area">
+    </div>
+
+  </div>
+
+  <script src="js/vendor/leaflet_v1.9.4/leaflet.js"></script>
+  <script src="js/vendor/localforage.min.js"></script>
+
+  <script src="js/app/extends/L.Control.Layers.WithClose.js"></script>
+  <script src="js/app/extends/L.GridLayer.TileCanvas.js"></script>
+  <script src="js/app/extends/L.GridLayer.TileCanvas.Cache.js"></script>
+  <script src="js/app/extends/L.LayerGroupWithAdding.js"></script>
+
+  <script src="js/app/errors/global_error_handler.js"></script>
+  <script src="js/app/states/Ga4Channel.js"></script>
+  <script src="js/app/states/Ga4Repo.js"></script>
+  <script src="js/app/states/global_const.js"></script>
+  <script src="js/app/states/global_state.js"></script>
+  <script src="js/app/states/global_statex_indexeddb_api_detector.js"></script>
+  <script src="js/app/states/GlobalCacheRepo.js"></script>
+  <script src="js/app/states/MyChannel.js"></script>
+  <script src="js/app/states/PermanentCacheStatusRepo.js"></script>
+  <script src="js/app/states/UrlQueryParamRepo.js"></script>
+  <script src="js/app/states/UrlRepo.js"></script>
+  <script src="js/app/utils/UtilCalcForTile.js"></script>
+  <script src="js/app/utils/UtilCircle.js"></script>
+  <script src="js/app/utils/UtilDeepFreeze.js"></script>
+  <script src="js/app/utils/UtilLeafletTooltip.js"></script>
+  <script src="js/app/utils/UtilLeafletTooltipAbsoluteDivPos.js"></script>
+  <script src="js/app/utils/UtilMap.js"></script>
+  <script src="js/app/utils/UtilMessage.js"></script>
+  <script src="js/app/utils/UtilMobileDetector.js"></script>
+  <script src="js/app/utils/UtilNumber.js"></script>
+  <script src="js/app/utils/UtilSleep.js"></script>
+  <script src="js/app/configs/config_circle.js"></script>
+  <script src="js/app/configs/config_map.js"></script>
+  <script src="js/app/managers/MapManager.js"></script>
+  <script src="js/app/managers/PermanentCacheManager.js"></script>
+  <script src="js/app/managers/PrefectureBorderManager.js"></script>
+  <script src="js/app/managers/SwitchTimeRangeManager.js"></script>
+  <script src="js/app/managers/TimelineManager.js"></script>
+  <script src="js/app/managers/clickManagers/ClickManager.js"></script>
+  <script src="js/app/managers/clickManagers/ClickManagerCore.js"></script>
+  <script src="js/app/managers/dialogs/AdvancedDialogManager.js"></script>
+  <script src="js/app/managers/dragHandlers/AdvancedDialogDragHandler.js"></script>
+  <script src="js/app/managers/dragHandlers/DialogHelper.js"></script>
+  <script src="js/app/managers/dragHandlers/DragHandlerCore.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerAxisManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerCoreManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerCurrentManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerEventArtManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerEventManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerGlobalEventManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerPeriodManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerSecondPeriodManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerStationManager.js"></script>
+  <script src="js/app/managers/markerManagers/MarkerVolcanoManager.js"></script>
+  <script src="js/app/managers/pathManagers/LineCoreManager.js"></script>
+  <script src="js/app/managers/pathManagers/PathManager.js"></script>
+  <script src="js/app/managers/pathManagers/SecondPathManager.js"></script>
+  <script src="js/app/managers/polygonManagers/EachPolygonManager.js"></script>
+  <script src="js/app/managers/polygonManagers/PolygonCoreManager.js"></script>
+  <script src="js/app/managers/searchManagers/SearchLatLngManager.js"></script>
+  <script src="js/app/managers/searchManagers/SearchLatLngManagerCore.js"></script>
+  <script src="js/app/managers/urlManagers/InitialSetViewManager.js"></script>
+  <script src="js/app/managers/urlManagers/UrlCopyManager.js"></script>
+  <script src="js/app/managers/urlManagers/UrlNormalizer.js"></script>
+  <script src="js/app/managers/urlManagers/UrlNormalizerForTimeline.js"></script>
+  <script src="js/app/managers/urlManagers/UrlValidator.js"></script>
+  <script src="js/app/index.js"></script>
+
+</body>
+</html>

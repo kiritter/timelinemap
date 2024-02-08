@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="「歴史年表地図」のAboutページです。">
+  <meta name="theme-color" content="#C4DFE6">
+  <title>About | 歴史年表地図</title>
+  <base href="/timelinemap/">
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" type="image/png" href="icons/apple-touch-icon-180x180.png">
+  <link rel="stylesheet" href="css/app/about.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B25L64G43V"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host === '127.0.0.1' || host === 'localhost') {
+      gtag = console.debug;
+    }else{
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B25L64G43V');
+    }
+  </script>
+</head>
+<body>
+  <div class="head">
+    <div class="title">『歴史年表地図：地図で表現するタイムライン』 © 2024 Kirishima</div>
+  </div>
+
+  <div class="body">
+    <div class="section">
+      <div>Third Party Libraries used by this website</div>
+      <div class="note">
+        <div><a href="NOTICE.txt" target="_blank">リストを開く</a></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div>推奨利用環境</div>
+      <div class="note">
+        <div>基本的にPCのChromeでのみ動作確認しております。</div>
+        <div>(古いVersion向けの対応はしておりません)</div>
+        <div>(モバイルデバイス向けには見栄え調整程度。かろうじて操作/閲覧できます。(そのまま使う、あるいは縦向きでPC版サイトを表示するモードで使う) )</div>
+        <div>(iOS系デバイスは未確認です)</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div>当サイトを作った背景、大元の発端</div>
+      <div class="note">
+        <div>十数年前のこと、読んだ本の内容を書き留めようと、表計算ソフト(Excel)で年表を作ったことがあります。</div>
+        <div>そのときに気づいたのは、間を省略することなく、年の間隔を一定にして書くことで、それぞれの出来事の遠さが実感できるという点でした。</div>
+        <br>
+        <div>当時は特に、縄文時代の圧倒的な時間の長さ、縄文土偶が気の遠くなるほど遠い昔に作られたという事実、</div>
+        <div>当時それを作った人が確かにいて、それが今日まで朽ち果てることなく形をとどめて残り、それを今実際に目にすることができている、</div>
+        <div>という奇跡的な出来事に目が眩む思いをしました。</div>
+        <br>
+        <div>一方で、</div>
+        <div>・年の間隔を短めにすると、全体は見通しやすいが、近い時代の出来事が書けない（近い時代こそ書きたい内容が多い）</div>
+        <div>・しかし、長くすると縄文時代が遠くなり過ぎて全体感を見失う（さらに遠く旧石器時代なんてとても書けない）</div>
+        <div>そのようなジレンマも抱えました。</div>
+        <br>
+        <div>時は過ぎ、先日、初めてWeb地図サイト(<a href="https://kiritter.github.io/hikakumap/" target="_blank">『時期と距離の比較地図』</a>)を作りました。</div>
+        <div>制作が一段落する頃、Web地図の仕組みを利用すれば、やりたかったことが実現できそうだと気づきました。</div>
+        <div>ズームの拡大/縮小の面だけでなく、地図であることから現実の地理感覚/距離感を念頭に閲覧することができ、</div>
+        <div>それによって常に全体感を持ちつつ詳細を見ることができる利点もあると。</div>
+        <div>（九州を見ているなら全体における古い時期を、愛知静岡を見ているなら全体における真ん中辺りを見ていることが自然に把握できる）</div>
+        <div>（「○○地方/○○県のあの辺りの出来事」と場所の位置のイメージとして記憶に残り、見て楽しく、人に伝えやすい）</div>
+        <br>
+        <div>最後に</div>
+        <div>2015年の夏、縄文時代を目的に、若狭<ruby>三方<rt>みかた</rt></ruby>縄文博物館を訪ね、現地で初めて水月湖のことを知りました。</div>
+        <div>その直後に『時を刻む湖』（中川 毅(著), 2015年, 岩波書店(岩波科学ライブラリー 242)）が出版され、そこで詳細な内容と経緯を知りました。</div>
+        <div>縄文時代をはるかにさかのぼる5～7万年という途方もない時間の積み重ねに（及び研究作業の精度と情熱に）圧倒され感動しました。</div>
+        <div>今回作成した年表の「後期旧石器時代～」範囲の表示は、水月湖の年縞がカバーする範囲に重なっており、</div>
+        <div>この時間の線上の1年1年に年縞がみっしりと積み重なっているのだと、改めて圧倒される思いです。</div>
+        <div>当サイトが、そのような驚きや感動の体験につながる手助けになれば幸いです。</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div>特記事項</div>
+      <div class="note2">
+        <div>当サイトには専用サーバー/専用データベースはなく、データ保存はございません。</div>
+        <div>ただし、稼働状況/利用状況の把握のため、[Googleアナリティクス(GA4) (サービス提供元:Google LLC)] にアクセス情報をデータ送信しています。</div>
+        <div>(個人を特定する情報はございません)</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div>免責事項</div>
+      <div class="note2">
+        <div>掲載情報/表示情報について、できる限り情報の正確性を心掛けておりますが、正確な情報提供を保証するものではございません。</div>
+        <div>当サイトをご利用することで発生したトラブル/損害/損失に対する一切の責任を負いかねますこと、ご了承ください。</div>
+      </div>
+    </div>
+
+    <div class="goto-top-section">
+      <div class="goto-top">
+        <span><a href="./" target="_self">『歴史年表地図：地図で表現するタイムライン』Topへ移動</a></span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="contact">
+        <span>Developed by</span>
+        <span><a href="https://twitter.com/kiritter" target="_blank">@kiritter</a></span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
